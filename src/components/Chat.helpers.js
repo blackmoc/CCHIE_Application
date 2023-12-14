@@ -1,5 +1,5 @@
 const generateGPTResponse = async (user_question) => {
-  const API_KEY = "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";
+  const API_KEY = "";
   const API_URL = "https://api.openai.com/v1/chat/completions";
   const requestOptions = {
     method: "POST",
