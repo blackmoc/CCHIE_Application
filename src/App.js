@@ -1,12 +1,7 @@
 import "./App.css";
-import Chat from "./components/Chat";
-
+import Layout from "pages/Layout";
 function App() {
-  return (
-    <>
-      <Chat />
-    </>
-  );
+  return <Layout />;
 }
 
 export default App;
