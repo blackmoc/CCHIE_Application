@@ -49,7 +49,9 @@ function Dashboard() {
   const [llamaUserQuestion, setLLamaUserQuestion] = useState("");
   const [llamaResponse, setLlamaResponse] = useState("");
 
-  const handleLlamaSubmit = async (event) => {};
+  const handleLlamaSubmit = async (event) => {
+    setLlamaResponse("");
+  };
 
   return (
     <Grid container spacing={3} pt={8} pr={4} pl={4}>
