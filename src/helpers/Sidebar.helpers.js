@@ -24,18 +24,22 @@ const sidebarItems = [
   {
     listIcon: <Message />,
     listText: "Chat",
+    path: "/chat",
   },
   {
     listIcon: <ChecklistIcon />,
     listText: "Tasks",
+    path: "/tbd",
   },
   {
     listIcon: <Assessment />,
     listText: "Reporting",
+    path: "/tbd",
   },
   {
     listIcon: <Person />,
     listText: "Users",
+    path: "/tbd",
   },
 ];
 

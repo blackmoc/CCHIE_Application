@@ -21,8 +21,8 @@ const Sidebar = () => {
     <List>
       {sidebarItems.map((item, index) => (
         <ListItem key={index} component={Link} to={item.path}>
-          <ListItemIcon sx={{ color: "white" }}>{item.listIcon}</ListItemIcon>
-          <ListItemText sx={{ color: "white" }}>{item.listText}</ListItemText>
+          <ListItemIcon sx={{ color: "#1877F2" }}>{item.listIcon}</ListItemIcon>
+          <ListItemText sx={{ color: "#1877F2" }}>{item.listText}</ListItemText>
         </ListItem>
       ))}
     </List>
@@ -30,9 +30,9 @@ const Sidebar = () => {
   const footerSidebarList = () => (
     <List>
       {footerSidebarItems.map((item, index) => (
-        <ListItem key={index}>
-          <ListItemIcon sx={{ color: "white" }}>{item.listIcon}</ListItemIcon>
-          <ListItemText sx={{ color: "white" }}>{item.listText}</ListItemText>
+        <ListItem key={index} component={Link} to={"/tbd"}>
+          <ListItemIcon sx={{ color: "#1877F2" }}>{item.listIcon}</ListItemIcon>
+          <ListItemText sx={{ color: "#1877F2" }}>{item.listText}</ListItemText>
         </ListItem>
       ))}
     </List>
@@ -44,9 +44,11 @@ const Sidebar = () => {
           key={index}
           sx={{ display: "flex", alignItems: "flex-end", flexWrap: "wrap" }}
         >
-          <ListItemIcon sx={{ color: "white" }}>{item.userImg}</ListItemIcon>
-          <ListItemText sx={{ color: "white" }}>{item.userName}</ListItemText>
-          <ListItemText sx={{ color: "white" }}>{item.userEmail}</ListItemText>
+          <ListItemIcon sx={{ color: "#1877F2" }}>{item.userImg}</ListItemIcon>
+          <ListItemText sx={{ color: "#1877F2" }}>{item.userName}</ListItemText>
+          <ListItemText sx={{ color: "#1877F2" }}>
+            {item.userEmail}
+          </ListItemText>
         </ListItem>
       ))}
     </List>
@@ -59,7 +61,7 @@ const Sidebar = () => {
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           boxSizing: "border-box",
-          backgroundColor: "#00192A",
+          backgroundColor: "#F4F6F8",
         },
       }}
       variant="permanent"
@@ -68,7 +70,7 @@ const Sidebar = () => {
       <Toolbar />
       <Typography
         sx={{
-          color: "white",
+          color: "#1877F2",
           fontWeight: "bold",
           fontSize: 20,
           textAlign: "center",
@@ -77,11 +79,11 @@ const Sidebar = () => {
       >
         CCHIE Dashboard Concept
       </Typography>
-      <Divider sx={{ bgcolor: "white", my: 2 }} />
+      <Divider sx={{ bgcolor: "DFE3E8", my: 2 }} />
       {sidebarList()}
-      <Divider sx={{ bgcolor: "white", my: 2 }} />
+      <Divider sx={{ bgcolor: "DFE3E8", my: 2 }} />
       {footerSidebarList()}
-      <Divider sx={{ bgcolor: "white", my: 1 }} />
+      <Divider sx={{ bgcolor: "DFE3E8", my: 1 }} />
       {userDefinition()}
     </Drawer>
   );
