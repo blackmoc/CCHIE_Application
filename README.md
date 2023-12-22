@@ -31,7 +31,7 @@ This will install all necessary packages and open the application via localhost.
 
 ## Resources
 
-- [React.js]: (https://react.dev/)
-- [Material UI]: (https://mui.com/material-ui/getting-started/)
-- [Material UI Icons]: (https://mui.com/material-ui/material-icons/)
-- [React Router]: (https://reactrouter.com/en/main)
+- [React.js](https://react.dev/)
+- [Material UI](https://mui.com/material-ui/getting-started/)
+- [Material UI Icons](https://mui.com/material-ui/material-icons/)
+- [React Router](https://reactrouter.com/en/main)
