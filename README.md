@@ -26,6 +26,10 @@ Once the files have been cloned from GitHub or downloaded via .zip files, within
    ```js
    const REACT_APP_OPENAI_API_KEY = "ENTER YOUR API";
    ```
+5. Start the application
+   ```sh
+   npm start
+   ```
 
 This will install all necessary packages and open the application via localhost.
 
