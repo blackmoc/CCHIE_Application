@@ -5,11 +5,7 @@ import logosrc from "../assets/images/logo.png";
 import { IconButton } from "@mui/material";
 import { Send } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import {
-  UserQuestion,
-  BotResponse,
-  ErrorMessage,
-} from "../components/Messages";
+import { UserQuestion, BotResponse } from "../components/Messages";
 import { ChatBubble } from "@mui/icons-material";
 
 function Chat() {
@@ -17,7 +13,6 @@ function Chat() {
   const [botResponse, setBotResponse] = useState("");
   const [chatMessages, setChatMessages] = useState([
     {
-      key: 1,
       content:
         "Welcome to Carnegie Classifications for Institutions for Higher Education. How can we assist you today?",
       role: "bot",
@@ -32,8 +27,8 @@ function Chat() {
         ...prev,
         { role: "user", content: userQuestion },
       ]);
-      const ftResponse = await generateFineTuneResponse(userQuestion);
-      setBotResponse(ftResponse);
+      const botResponse = await generateFineTuneResponse(userQuestion);
+      setBotResponse(botResponse);
       console.log(botResponse);
       setChatMessages((prev) => [
         ...prev,
@@ -60,19 +55,19 @@ function Chat() {
           />
           <div className="header-text">
             <h3>Carnegie Chat V1.2</h3>
-            <h5>Subtext if needed...</h5>
+            <h5>Fine Tuned Model...</h5>
           </div>
         </section>
         <section className="conversation-container">
           <div className="conversation">
-            {chatMessages.map((text) => (
-              <>
+            {chatMessages.map((text, index) => (
+              <div key={index}>
                 {text.role === "user" ? (
                   <UserQuestion message={[text.content]} />
                 ) : (
                   <BotResponse message={[text.content]} />
                 )}
-              </>
+              </div>
             ))}
             <hr />
             <form className="user-input" onSubmit={handleSubmit}>
