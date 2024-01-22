@@ -94,22 +94,13 @@ function Chat() {
         </section>
       </div>
       <div className="bottom-elem">
-        <IconButton
-          sx={{
-            backgroundColor: "rgba(0, 81, 134, 1)",
-            borderRadius: "50%",
-            padding: "15px",
-            color: "white",
-          }}
-          className="trigger-button"
-          onClick={handleTrigger}
-        >
-          <ChatBubble fontSize="inherit" />
+        <IconButton onClick={handleTrigger}>
+          <ChatBubble className="trigger-button" fontSize="inherit" />
         </IconButton>
-        <Link className="signin-link" to={"/signin"}>
+        {/* <Link className="signin-link" to={"/signin"}>
           Admin
         </Link>
-        <button onClick={handleClear}>Clear</button>
+        <button onClick={handleClear}>Clear</button> */}
       </div>
     </div>
   );
