@@ -1,0 +1,41 @@
+.api-key-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto; 
+    border-radius: 10px;
+    text-align: center;
+
+    
+    width: 90%; 
+    margin-top: 10vh; 
+  }
+  
+  .api-key-container h1 {
+    margin-bottom: 10px;
+  }
+  
+  .api-key-container p {
+    margin-bottom: 15px;
+  }
+  
+  .api-key-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; 
+  }
+  
+  .api-key-container button {
+    background-color: #1e106d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; 
+  }
+  
+  .api-key-container button:hover {
+    background-color: #45a049;
+  }
+  
