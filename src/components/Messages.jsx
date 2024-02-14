@@ -47,14 +47,16 @@ const ErrorMessage = () => {
 const WelcomeMessage = ({ name }) => {
   const greeting = timeResponse();
   return (
-    <div className="bot-container">
-      <Logo height={32} />
-      <p className="bot-response">
-        {greeting} {name ? " " : null}
-        and Welcome to Carnegie Classifications for Institutions for Higher
-        Education.
-      </p>
-    </div>
+    <>
+      <div className="bot-container">
+        <Logo height={32} />
+        <p className="bot-response">
+          {greeting} {name ? " " : null}
+          and Welcome to Carnegie Classifications for Institutions for Higher
+          Education. How can we help?
+        </p>
+      </div>
+    </>
   );
 };
 const FollowResponse = ({ name, category }) => {

@@ -21,6 +21,10 @@ function Chat() {
   const [userQuestion, setUserQuestion] = useState("");
   const [botResponse, setBotResponse] = useState("");
   const [conversation, setConversation] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const handleTrigger = () => {
+    setIsVisible(!isVisible);
+  };
   const [formData, setData] = useState("");
   const infoOnSubmit = (data) => {
     setData(JSON.stringify(data));
@@ -50,7 +54,6 @@ function Chat() {
         { role: "user", content: <UserQuestion message={userQuestion} /> },
       ]);
       const botResponse = await generateFineTuneResponse(userQuestion);
-      //
       setBotResponse(botResponse);
       setConversation((prev) => [
         ...prev,
@@ -68,7 +71,7 @@ function Chat() {
 
   return (
     <div className="chatbot">
-      <div className="chat-container">
+      <div className={` ${isVisible ? "chat-container" : "hidden"}`}>
         <section className="chat-header">
           <Logo height={40} />
           <div className="header-text">
@@ -145,7 +148,7 @@ function Chat() {
         </form>
       </div>
       <div className="bottom-elem">
-        <IconButton>
+        <IconButton onClick={handleTrigger}>
           <ChatBubble className="trigger-button" fontSize="inherit" />
         </IconButton>
       </div>

@@ -24,11 +24,11 @@ Once the files have been cloned from GitHub or downloaded via .zip files, within
    ```
 4. Create a `.env` file and enter your API Key.
    ```js
-   const REACT_APP_OPENAI_API_KEY = "ENTER YOUR API";
+   const VITE_OPENAI_API_KEY = "ENTER YOUR API";
    ```
 5. Start the application
    ```sh
-   npm start
+   npm run dev
    ```
 
 This will install all necessary packages and open the application via localhost.
@@ -39,3 +39,4 @@ This will install all necessary packages and open the application via localhost.
 - [Material UI](https://mui.com/material-ui/getting-started/)
 - [Material UI Icons](https://mui.com/material-ui/material-icons/)
 - [React Router](https://reactrouter.com/en/main)
+- [OpenAI](https://openai.com/)

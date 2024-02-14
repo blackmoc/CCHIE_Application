@@ -4,13 +4,10 @@ function timeResponse() {
   const EVENING = "Good Evening";
   const GENERIC = "Hello";
 
-  const DateTime = new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const DateTime = new Date().getHours();
+
   if (DateTime) {
-    const hour = parseInt(DateTime.split(":")[0]);
-    //console.log(DateTime);
+    const hour = DateTime;
 
     if (hour >= 5 && hour < 12) {
       return MORNING;
