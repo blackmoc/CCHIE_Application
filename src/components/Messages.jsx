@@ -21,9 +21,9 @@ const GeneralResponse = (props) => {
 // Add a case for known links and link text
 const LinkResponse = (props) => {
   return (
-    <div className="link-response">
+    <div className="link-container">
       <Logo height={32} />
-      <div className="bot-response">
+      <div className="link-response">
         <p>{props.message}</p>
         <hr />
         <a href={props.link}>Visit This Link</a>
@@ -43,29 +43,57 @@ const ErrorMessage = () => {
     </div>
   );
 };
+
+// const CategorySelectMessage = () => {
+//   return (
+//     <div className="category-container">
+//       <Logo height={32} />
+//       <div className="category-msg">
+//         <p>Before we get started, do you mind filling in the following?</p>
+//         <form onSubmit={handleSubmit(infoOnSubmit)}>
+//           <label>
+//             Name: <input type="text" {...register("user.name")} />
+//           </label>
+
+//           <label>
+//             Email: <input {...register("user.email")} />
+//           </label>
+//           <label>
+//             Category:
+//             <select {...register("category")}>
+//               {questionCategory.map((cat) => (
+//                 <option key={cat.value} value={cat.name}>
+//                   {cat.name}
+//                 </option>
+//               ))}
+//             </select>
+//           </label>
+//           <button type="submit">Next</button>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
 // Soon will have "{Good Morning} {name}......."
 const WelcomeMessage = ({ name }) => {
   const greeting = timeResponse();
   return (
-    <>
-      <div className="bot-container">
-        <Logo height={32} />
-        <p className="bot-response">
-          {greeting} {name ? " " : null}
-          and Welcome to Carnegie Classifications for Institutions for Higher
-          Education. How can we help?
-        </p>
-      </div>
-    </>
+    <div className="bot-container">
+      <Logo height={32} />
+      <p className="bot-response">
+        {greeting} {name ? " " : null}
+        and Welcome to Carnegie Classifications for Institutions for Higher
+        Education. How can we help?
+      </p>
+    </div>
   );
 };
-const FollowResponse = ({ name, category }) => {
+const FollowResponse = ({ category }) => {
   return (
     <div className="bot-container">
       <Logo height={32} />
       <p className="bot-response">
-        Okay {name}. How can we assist you today with your question about{" "}
-        {category}?
+        Okay. How can we assist you today with your question about {category}?
       </p>
     </div>
   );

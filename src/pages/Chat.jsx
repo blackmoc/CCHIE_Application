@@ -7,6 +7,7 @@ import {
   GeneralResponse,
   FollowResponse,
   ErrorMessage,
+  LinkResponse,
 } from "../components/Messages";
 import { Logo } from "../components/General";
 import { questionCategory } from "../assets/constants/Constants";
@@ -37,7 +38,7 @@ function Chat() {
           content: (
             <FollowResponse
               key="follow-resp"
-              name={data.user.name}
+              // name={data.user.name}
               category={data.category}
             />
           ),
@@ -55,10 +56,25 @@ function Chat() {
       ]);
       const botResponse = await generateFineTuneResponse(userQuestion);
       setBotResponse(botResponse);
-      setConversation((prev) => [
-        ...prev,
-        { role: "bot", content: <GeneralResponse message={botResponse} /> },
-      ]);
+      if (botResponse.includes("http")) {
+        setConversation((prev) => [
+          ...prev,
+          {
+            role: "bot",
+            content: (
+              <LinkResponse
+                message={botResponse}
+                link={"http://www.kean.edu"}
+              />
+            ),
+          },
+        ]);
+      } else {
+        setConversation((prev) => [
+          ...prev,
+          { role: "bot", content: <GeneralResponse message={botResponse} /> },
+        ]);
+      }
     } catch (error) {
       console.error("Errrrorrrrr:", error);
       setConversation((prev) => [
@@ -85,17 +101,7 @@ function Chat() {
             <div className="category-container">
               <Logo height={32} />
               <div className="category-msg">
-                <p>
-                  Before we get started, do you mind filling in the following?
-                </p>
                 <form onSubmit={handleSubmit(infoOnSubmit)}>
-                  <label>
-                    Name: <input type="text" {...register("user.name")} />
-                  </label>
-
-                  <label>
-                    Email: <input {...register("user.email")} />
-                  </label>
                   <label>
                     Category:
                     <select {...register("category")}>
@@ -110,7 +116,6 @@ function Chat() {
                 </form>
               </div>
             </div>
-
             {conversation.map((text, index) => (
               <div key={index}>{text.content}</div>
             ))}
