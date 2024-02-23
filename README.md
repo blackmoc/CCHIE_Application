@@ -33,6 +33,8 @@ Once the files have been cloned from GitHub or downloaded via .zip files, within
 
 This will install all necessary packages and open the application via localhost.
 
+Note: You have access to query GPT 3.5 ONLY and not the fine tuned model.
+
 ## Resources
 
 - [React.js](https://react.dev/)
