@@ -1,5 +1,6 @@
 const generateGPTResponse = async (user_question) => {
-  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  // const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const API_KEY = "PLACE_YOUR_API_KEY_HERE"
   const API_URL = "https://api.openai.com/v1/chat/completions";
   const requestOptions = {
     method: "POST",
@@ -33,7 +34,8 @@ const generateGPTResponse = async (user_question) => {
 };
 
 const generateFineTuneResponse = async (user_question) => {
-  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  // const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const API_KEY = "PLACE_YOUR_API_KEY_HERE"
   const API_URL = "https://api.openai.com/v1/chat/completions";
   const requestOptions = {
     method: "POST",

@@ -14,7 +14,7 @@ import { questionCategory } from "../assets/constants/Constants";
 import { IconButton } from "@mui/material";
 import { Send, ChatBubble } from "@mui/icons-material";
 // Helpers Import
-import { generateFineTuneResponse } from "../helpers/Chatbot.helpers";
+import { generateGPTResponse } from "../helpers/Chatbot.helpers";
 // Style Import
 import "../styles/chat.css";
 
@@ -54,7 +54,7 @@ function Chat() {
         ...prev,
         { role: "user", content: <UserQuestion message={userQuestion} /> },
       ]);
-      const botResponse = await generateFineTuneResponse(userQuestion);
+      const botResponse = await generateGPTResponse(userQuestion);
       setBotResponse(botResponse);
       if (botResponse.includes("http")) {
         setConversation((prev) => [

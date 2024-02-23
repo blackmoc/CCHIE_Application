@@ -33,6 +33,18 @@ Once the files have been cloned from GitHub or downloaded via .zip files, within
 
 This will install all necessary packages and open the application via localhost.
 
+## Testing the Flask App
+
+You can test the Flask app by sending a POST request to the `/apicall` endpoint.
+
+### Using Curl
+
+Using curl, you can open a new terminal window and execute the following command:
+
+```sh
+curl -X POST -H "Content-Type: application/json" -d '{"user_question":"Why is the sky blue?"}' http://127.0.0.1:5000/apicall
+```
+
 ## Resources
 
 - [React.js](https://react.dev/)
