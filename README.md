@@ -45,6 +45,8 @@ Using curl, you can open a new terminal window and execute the following command
 curl -X POST -H "Content-Type: application/json" -d '{"user_question":"Why is the sky blue?"}' http://127.0.0.1:5000/apicall
 ```
 
+Note: You have access to query GPT 3.5 ONLY and not the fine tuned model.
+
 ## Resources
 
 - [React.js](https://react.dev/)

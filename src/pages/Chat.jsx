@@ -84,7 +84,6 @@ function Chat() {
     }
   };
   const { register, handleSubmit } = useForm();
-
   return (
     <div className="chatbot">
       <div className={` ${isVisible ? "chat-container" : "hidden"}`}>
@@ -92,7 +91,7 @@ function Chat() {
           <Logo height={40} />
           <div className="header-text">
             <h3>Carnegie Chat V1.2</h3>
-            <h5>Fine Tuned Model...</h5>
+            <h5>GPT 3.5 Model...</h5>
           </div>
         </section>
         <section className="conversation-container">
