@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 // Component Import
 import {
   WelcomeMessage,
@@ -7,14 +8,13 @@ import {
   GeneralResponse,
   FollowResponse,
   ErrorMessage,
-  LinkResponse,
 } from "../components/Messages";
 import { Logo } from "../components/General";
 import { questionCategory } from "../assets/constants/Constants";
 import { IconButton } from "@mui/material";
 import { Send, ChatBubble } from "@mui/icons-material";
 // Helpers Import
-import { generateGPTResponse } from "../helpers/Chatbot.helpers";
+// import { generateGPTResponse } from "../helpers/Chatbot.helpers";
 // Style Import
 import "../styles/chat.css";
 
@@ -27,6 +27,23 @@ function Chat() {
     setIsVisible(!isVisible);
   };
   const [formData, setData] = useState("");
+  const fetchPythonResponse = async () => {
+    try {
+      const response = await axios.post("http://127.0.0.1:5000/gpt3", {
+        question: userQuestion,
+      });
+      const botResponse = response.data;
+      console.log(botResponse);
+      setBotResponse(botResponse);
+
+      setConversation((prev) => [
+        ...prev,
+        { role: "bot", content: <GeneralResponse message={botResponse} /> },
+      ]);
+    } catch (error) {
+      console.error("Error fetching response:", error);
+    }
+  };
   const infoOnSubmit = (data) => {
     setData(JSON.stringify(data));
     console.log(formData);
@@ -54,27 +71,8 @@ function Chat() {
         ...prev,
         { role: "user", content: <UserQuestion message={userQuestion} /> },
       ]);
-      const botResponse = await generateGPTResponse(userQuestion);
-      setBotResponse(botResponse);
-      if (botResponse.includes("http")) {
-        setConversation((prev) => [
-          ...prev,
-          {
-            role: "bot",
-            content: (
-              <LinkResponse
-                message={botResponse}
-                link={"http://www.kean.edu"}
-              />
-            ),
-          },
-        ]);
-      } else {
-        setConversation((prev) => [
-          ...prev,
-          { role: "bot", content: <GeneralResponse message={botResponse} /> },
-        ]);
-      }
+      // const botResponse = await generateGPTResponse(userQuestion);
+      fetchPythonResponse();
     } catch (error) {
       console.error("Errrrorrrrr:", error);
       setConversation((prev) => [
