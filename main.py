@@ -4,8 +4,6 @@ from flask import Flask, jsonify, request
 import openai
 from flask_cors import CORS, cross_origin
 
-openai.api_key = ""
-
 app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type: "application/json" '
