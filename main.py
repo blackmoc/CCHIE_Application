@@ -1,5 +1,5 @@
 #Hi from Habiba
-#Hi from Essence i think i broke it
+#Hi from Essence
 from flask import Flask, jsonify, request
 import openai
 from flask_cors import CORS, cross_origin
