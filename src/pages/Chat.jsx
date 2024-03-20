@@ -17,6 +17,7 @@ import { Send, ChatBubble } from "@mui/icons-material";
 // import { generateGPTResponse } from "../helpers/Chatbot.helpers";
 // Style Import
 import "../styles/chat.css";
+import Sidebar from "../components/Sidebar";
 
 function Chat() {
   const [userQuestion, setUserQuestion] = useState("");
@@ -83,78 +84,81 @@ function Chat() {
   };
   const { register, handleSubmit } = useForm();
   return (
-    <div className="chatbot">
-      <div className={` ${isVisible ? "chat-container" : "hidden"}`}>
-        <section className="chat-header">
-          <Logo height={40} />
-          <div className="header-text">
-            <h3>Carnegie Chat V1.2</h3>
-            <h5>GPT 3.5 Model...</h5>
-          </div>
-        </section>
-        <section className="conversation-container">
-          <div className="conversation">
-            <WelcomeMessage />
-            <div className="category-container">
-              <Logo height={32} />
-              <div className="category-msg">
-                <form onSubmit={handleSubmit(infoOnSubmit)}>
-                  <label>
-                    Category:
-                    <select {...register("category")}>
-                      {questionCategory.map((cat) => (
-                        <option key={cat.value} value={cat.name}>
-                          {cat.name}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <button type="submit">Next</button>
-                </form>
-              </div>
+    <>
+      <Sidebar />
+      <div className="chatbot">
+        <div className={` ${isVisible ? "chat-container" : "hidden"}`}>
+          <section className="chat-header">
+            <Logo height={40} />
+            <div className="header-text">
+              <h3>Carnegie Chat V1.2</h3>
+              <h5>GPT 3.5 Model...</h5>
             </div>
-            {conversation.map((text, index) => (
-              <div key={index}>{text.content}</div>
-            ))}
-          </div>
-        </section>
-        <hr className="conversation-hr" />
-        <form
-          className="user-input"
-          onSubmit={handleSubmit(onSubmit)}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              handleSubmit(onSubmit);
-            }
-          }}
-        >
-          <textarea
-            value={userQuestion}
-            onChange={(e) => setUserQuestion(e.target.value)}
-            placeholder="Ask a question..."
-          />
-          <IconButton
-            size="inherit"
-            aria-label="send"
-            fontSize="small"
-            sx={{
-              "&:hover": {
-                color: "#3F7CBF",
-                background: "none",
-              },
+          </section>
+          <section className="conversation-container">
+            <div className="conversation">
+              <WelcomeMessage />
+              <div className="category-container">
+                <Logo height={32} />
+                <div className="category-msg">
+                  <form onSubmit={handleSubmit(infoOnSubmit)}>
+                    <label>
+                      Category:
+                      <select {...register("category")}>
+                        {questionCategory.map((cat) => (
+                          <option key={cat.value} value={cat.name}>
+                            {cat.name}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <button type="submit">Next</button>
+                  </form>
+                </div>
+              </div>
+              {conversation.map((text, index) => (
+                <div key={index}>{text.content}</div>
+              ))}
+            </div>
+          </section>
+          <hr className="conversation-hr" />
+          <form
+            className="user-input"
+            onSubmit={handleSubmit(onSubmit)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                handleSubmit(onSubmit);
+              }
             }}
-            type="submit"
           >
-            <Send />
+            <textarea
+              value={userQuestion}
+              onChange={(e) => setUserQuestion(e.target.value)}
+              placeholder="Ask a question..."
+            />
+            <IconButton
+              size="inherit"
+              aria-label="send"
+              fontSize="small"
+              sx={{
+                "&:hover": {
+                  color: "#3F7CBF",
+                  background: "none",
+                },
+              }}
+              type="submit"
+            >
+              <Send />
+            </IconButton>
+          </form>
+        </div>
+        <div className="bottom-elem">
+          <IconButton onClick={handleTrigger}>
+            <ChatBubble className="trigger-button" fontSize="inherit" />
           </IconButton>
-        </form>
+        </div>
       </div>
-      <div className="bottom-elem">
-        <IconButton onClick={handleTrigger}>
-          <ChatBubble className="trigger-button" fontSize="inherit" />
-        </IconButton>
-      </div>
-    </div>
+    </>
   );
 }
 
