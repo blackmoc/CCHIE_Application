@@ -34,7 +34,7 @@ export const userresponses = [
   {
     id: 5,
     name: "Johann Scriviner",
-    question: "Vilnius University",
+    question: "What if my institution is not Carnegie Classified?",
     email: "jscriviner4@nps.gov",
     source: null,
     response: null,
@@ -42,7 +42,7 @@ export const userresponses = [
   {
     id: 6,
     name: "Cristie Housego",
-    question: "Takhatmal Shrivallabh Homoeopathic Medical College",
+    question: "How can I update my institution's classification?",
     email: "chousego5@aboutads.info",
     source: null,
     response: null,
@@ -50,7 +50,7 @@ export const userresponses = [
   {
     id: 7,
     name: "Meghan Duffett",
-    question: "Universidad Nacional del Callao",
+    question: "What does it take to be a Carnegie Research University?",
     email: "mduffett6@wikimedia.org",
     source: null,
     response: null,
@@ -58,7 +58,7 @@ export const userresponses = [
   {
     id: 8,
     name: "Arty Whitear",
-    question: "University of lloilo",
+    question: "How can I find my institution's classification?",
     email: "awhitear7@twitter.com",
     source: null,
     response: null,
@@ -66,7 +66,7 @@ export const userresponses = [
   {
     id: 9,
     name: "Loren Alvarez",
-    question: "Winston-Salem State University",
+    question: "What are the criteria for a Carnegie Research University?",
     email: "lalvarez8@abc.net.au",
     source: null,
     response: null,
@@ -74,7 +74,8 @@ export const userresponses = [
   {
     id: 10,
     name: "Gabi Beaudry",
-    question: "Universidad de Managua (U de M)",
+    question:
+      "Why only US institutions are classified in the Carnegie Classification?",
     email: "gbeaudry9@wordpress.org",
     source: null,
     response: null,

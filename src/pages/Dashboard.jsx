@@ -11,21 +11,42 @@ import { useState } from "react";
 
 function Dashboard() {
   const [question, setQuestion] = useState("");
-  const [response, setResponse] = useState("");
-  const handleSubmit = async (e) => {
+  const [responseA, setResponseA] = useState("");
+  const [responseB, setResponseB] = useState("");
+  const [responseC, setResponseC] = useState("");
+  const handleSubmitA = async (e) => {
     e.preventDefault();
-    retrieveGPTResponse();
-  };
-  const doNothing = () => {};
-  const retrieveGPTResponse = async () => {
     try {
       const resp = await generateGPTResponse(question);
       console.log("Question:", question, "\nResponse:", resp);
-      setResponse(resp);
+      setResponseA(resp);
     } catch (error) {
       console.error("ERRRROR:", error);
     }
   };
+  const handleSubmitB = async (e) => {
+    e.preventDefault();
+    try {
+      const resp = await generateGPTResponse(question);
+      console.log("Question:", question, "\nResponse:", resp);
+      setResponseB(resp);
+    } catch (error) {
+      console.error("ERRRROR:", error);
+    }
+  };
+  const handleSubmitC = async (e) => {
+    e.preventDefault();
+    setResponseC("This form is not currently active.");
+  };
+  // const retrieveGPTResponse = async () => {
+  //   try {
+  //     const resp = await generateGPTResponse(question);
+  //     console.log("Question:", question, "\nResponse:", resp);
+  //     setResponse(resp);
+  //   } catch (error) {
+  //     console.error("ERRRROR:", error);
+  //   }
+  // };
   return (
     <div className="dashboard">
       <Sidebar className="sidebar" />
@@ -33,42 +54,56 @@ function Dashboard() {
         <div className="card">
           <div className="card-container">
             <h2 className="card-title">GPT 3.5 Turbo</h2>
-            <form className="card-form" onSubmit={handleSubmit}>
-              <label className="card-label">Question</label>
-              <textarea
-                className="card-textarea"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-              />
+            <form className="card-form" onSubmit={handleSubmitA}>
+              <label className="card-label">
+                Question
+                <textarea
+                  className="card-textarea"
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
+                  id="question-ta"
+                />
+              </label>
               <button className="card-btn" type="submit">
                 Retrieve
               </button>
             </form>
-            {response && <p>{response}</p>}
+            {responseA && <p>{responseA}</p>}
+          </div>
+        </div>
+        <div className="card">
+          <div className="card-container">
+            <h2 className="card-title">GPT 3.5 Fine Tuned</h2>
+            <form className="card-form" onSubmit={handleSubmitB}>
+              <label className="card-label">
+                Question
+                <textarea
+                  className="card-textarea"
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
+                  id="question-ta"
+                />
+              </label>
+              <button className="card-btn" type="submit">
+                Retrieve
+              </button>
+            </form>
+            {responseB && <p>{responseB}</p>}
           </div>
         </div>
         <div className="card">
           <div className="card-container">
             <h2 className="card-title broken">MODEL TITLE</h2>
-            <form className="card-form" onSubmit={doNothing}>
-              <label className="card-label">Question</label>
-              <textarea className="card-textarea" />
+            <form className="card-form" onSubmit={handleSubmitC}>
+              <label className="card-label">
+                Question
+                <textarea className="card-textarea" id="question-ta" />
+              </label>
               <button className="card-btn" type="submit">
                 Retrieve
               </button>
             </form>
-          </div>
-        </div>
-        <div className="card">
-          <div className="card-container">
-            <h2 className="card-title broken">MODEL TITLE</h2>
-            <form className="card-form" onSubmit={doNothing}>
-              <label className="card-label">Question</label>
-              <textarea className="card-textarea" />
-              <button className="card-btn" type="submit">
-                Retrieve
-              </button>
-            </form>
+            {responseC && <p>{responseC}</p>}
           </div>
         </div>
         <div className="card">
