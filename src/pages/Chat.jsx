@@ -14,7 +14,7 @@ import { questionCategory } from "../assets/constants/Constants";
 import { IconButton } from "@mui/material";
 import { Send, ChatBubble } from "@mui/icons-material";
 // Helpers Import
-// import { generateGPTResponse } from "../helpers/Chatbot.helpers";
+import { generateGPTResponse } from "../helpers/Chatbot.helpers";
 // Style Import
 import "../styles/chat.css";
 import Sidebar from "../components/Sidebar";
@@ -45,6 +45,20 @@ function Chat() {
       console.error("Error fetching response:", error);
     }
   };
+  const fetchGPTResponse = async () => {
+    try {
+      const botResponse = await generateGPTResponse(userQuestion);
+      console.log("Question:", userQuestion, "\nResponse:", botResponse);
+      setBotResponse(botResponse);
+
+      setConversation((prev) => [
+        ...prev,
+        { role: "bot", content: <GeneralResponse message={botResponse} /> },
+      ]);
+    } catch (error) {
+      console.error("ERRRROR:", error);
+    }
+  };
   const infoOnSubmit = (data) => {
     setData(JSON.stringify(data));
     console.log(formData);
@@ -72,8 +86,8 @@ function Chat() {
         ...prev,
         { role: "user", content: <UserQuestion message={userQuestion} /> },
       ]);
-      // const botResponse = await generateGPTResponse(userQuestion);
-      fetchPythonResponse();
+      // fetchPythonResponse();
+      fetchGPTResponse();
     } catch (error) {
       console.error("Errrrorrrrr:", error);
       setConversation((prev) => [
@@ -98,7 +112,7 @@ function Chat() {
           <section className="conversation-container">
             <div className="conversation">
               <WelcomeMessage />
-              <div className="category-container">
+              {/* <div className="category-container">
                 <Logo height={32} />
                 <div className="category-msg">
                   <form onSubmit={handleSubmit(infoOnSubmit)}>
@@ -115,7 +129,7 @@ function Chat() {
                     <button type="submit">Next</button>
                   </form>
                 </div>
-              </div>
+              </div> */}
               {conversation.map((text, index) => (
                 <div key={index}>{text.content}</div>
               ))}
