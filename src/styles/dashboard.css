@@ -1,7 +1,7 @@
 .dashboard {
 	height: 100vh;
 	display: grid;
-	grid-template-columns: 200px 1fr;
+	grid-template-columns: 150px 1fr;
 	grid-template-rows: 60px 1fr;
 	grid-template-areas: "side main" "side main";
 }
@@ -23,6 +23,11 @@
 
 .sidebar {
 	grid-area: side;
+}
+
+.header {
+	background-color: #fff;
+	grid-area: header;
 }
 
 .card {
@@ -52,4 +57,64 @@
 
 .card:nth-child(6) {
 	grid-area: c6;
+}
+
+.card-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 20px 35px;
+	/* outline: 3px solid red; */
+}
+
+.card-title {
+	text-align: center;
+	padding-top: 10px;
+	font-size: 1.5rem;
+}
+
+.card-form {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.card-label {
+	font-weight: bold;
+	float: left;
+	font-size: 1.15rem;
+}
+
+.card-textarea {
+	border: 2px solid #DADDEC;
+	margin: 5px 0 10px;
+	height: 80px;
+	outline: none;
+	resize: none;
+	width: 95%;
+}
+
+.card-btn {
+	max-width: 175px;
+	font-size: 1rem;
+	font-weight: bold;
+	color: #fff;
+	background-color: #0066CC;
+	padding: 10px 5px;
+	border: none;
+	transition: 500ms;
+	transform: translateY(0);
+	cursor: pointer;
+	border-radius: 15px;
+}
+
+.card-btn:hover {
+	border: 2px solid #0066CC;
+	background-color: #fff;
+	color: #0066CC;
+	transition: 500ms;
+}
+
+.broken {
+	color: red;
 }
