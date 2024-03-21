@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/concept" element={<Chat />} />
       </Routes>
     </Router>
   );

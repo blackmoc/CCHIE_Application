@@ -1,19 +1,25 @@
 import logosrc from "../assets/images/logo.png";
 import { NavLink } from "react-router-dom";
 import "../styles/sidebar.css";
-import { FaBars } from "react-icons/fa";
+import { FaMessage, FaHouse, FaHourglassHalf } from "react-icons/fa6";
 
 const Sidebar = () => {
   const menuItem = [
     {
       path: "/",
       name: "Dashboard",
-      icon: <FaBars />,
+      icon: <FaHouse />,
     },
     {
       path: "/chat",
       name: "Chat",
-      icon: <FaBars />,
+      icon: <FaMessage />,
+    },
+
+    {
+      path: "/concept",
+      name: "Concept",
+      icon: <FaHourglassHalf />,
     },
   ];
   return (
