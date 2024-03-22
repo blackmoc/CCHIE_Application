@@ -108,7 +108,10 @@ function Dashboard() {
         </div>
         <div className="card">
           <div className="card-container">
-            <h2>User Questions</h2>
+            <div className="table-header">
+              <h2 className="data-table-header">User Questions</h2>
+              <button className="table-btn">Add Row</button>
+            </div>
             <Table />
           </div>
         </div>

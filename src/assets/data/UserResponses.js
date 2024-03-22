@@ -5,7 +5,8 @@ export const userresponses = [
     question: "Why is the sky blue?",
     email: "zcuffley0@booking.com",
     source: null,
-    response: null,
+    response:
+      "The sky appears blue due to the scattering of sunlight by the gases and particles in the Earth's atmosphere, with shorter blue wavelengths being scattered more than other colors, as explained by Rayleigh scattering.",
   },
   {
     id: 2,
