@@ -100,6 +100,28 @@ function Chat() {
   return (
     <>
       <Sidebar />
+      <div className="concept-chat">
+        <div className="concept-container">
+          <section className="concept-header"></section>
+          <section
+            className="input-container"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <h1>COMING SOON</h1>
+          </section>
+        </div>
+        <div className="bottom-elem">
+          <IconButton>
+            <ChatBubble className="trigger-button red" fontSize="inherit" />
+          </IconButton>
+        </div>
+      </div>
       <div className="chatbot">
         <div className={` ${isVisible ? "chat-container" : "hidden"}`}>
           <section className="chat-header">
@@ -112,24 +134,6 @@ function Chat() {
           <section className="conversation-container">
             <div className="conversation">
               <WelcomeMessage />
-              {/* <div className="category-container">
-                <Logo height={32} />
-                <div className="category-msg">
-                  <form onSubmit={handleSubmit(infoOnSubmit)}>
-                    <label>
-                      Category:
-                      <select {...register("category")}>
-                        {questionCategory.map((cat) => (
-                          <option key={cat.value} value={cat.name}>
-                            {cat.name}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <button type="submit">Next</button>
-                  </form>
-                </div>
-              </div> */}
               {conversation.map((text, index) => (
                 <div key={index}>{text.content}</div>
               ))}
