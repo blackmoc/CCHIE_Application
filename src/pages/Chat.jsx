@@ -102,23 +102,37 @@ function Chat() {
       <Sidebar />
       <div className="concept-chat">
         <div className="concept-container">
-          <section className="concept-header"></section>
-          <section
-            className="input-container"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%",
-              width: "100%",
-            }}
-          >
-            <h1>COMING SOON</h1>
+          <section className="input-container">
+            <div className="welcome-text">
+              <h3>
+                Welcome to Carnegie Classifications for Institutions of Higher
+                Education!
+              </h3>
+              <p className="sub">
+                By submitting, you consent to the use of your question in the
+                development of our artificial intelligience based interface.
+              </p>
+            </div>
+            <form className="form">
+              <label>
+                Name
+                <input type="text" id="name" />
+              </label>
+              <label>
+                Email Address
+                <input type="email" id="email" />
+              </label>
+              <label>
+                Question
+                <textarea type="text" id="question" />
+              </label>
+              <button type="submit">Send</button>
+            </form>
           </section>
         </div>
         <div className="bottom-elem">
           <IconButton>
-            <ChatBubble className="trigger-button red" fontSize="inherit" />
+            <ChatBubble className="trigger-button" fontSize="inherit" />
           </IconButton>
         </div>
       </div>

@@ -15,10 +15,9 @@ const Sidebar = () => {
       name: "Chat",
       icon: <FaMessage />,
     },
-
     {
-      path: "/concept",
-      name: "Concept",
+      path: "/db",
+      name: "Database",
       icon: <FaHourglassHalf />,
     },
   ];

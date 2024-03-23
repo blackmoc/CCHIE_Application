@@ -1,6 +1,6 @@
 * {
 	margin: 0;
-	line-height: 120%;
+	line-height: 110%;
 }
 
 :root {
@@ -185,16 +185,16 @@ input {
 	left: 0;
 }
 
-textarea {
+.user-input textarea {
 	width: 100%;
 	padding: 15px 2px 2px 15px;
 	margin: 2px 0 2px 1px;
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 15px;
 	resize: none;
 	border: none;
 	height: 50px;
 	background-color: var(--chatbg);
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .bottom-elem {
@@ -236,6 +236,7 @@ textarea {
 	position: fixed;
 	bottom: 50px;
 	right: 550px;
+	box-sizing: border-box;
 }
 
 .red {
@@ -246,6 +247,7 @@ textarea {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	justify-content: center;
 	width: 500px;
 	height: 300px;
 	overflow: hidden;
@@ -253,4 +255,107 @@ textarea {
 	background: var(--chatbg);
 	box-shadow: 5px 14px 80px 0px rgba(26, 26, 26, 0.12), 10px 10px 40px 0px rgba(0, 0, 0, 0.08);
 	position: relative;
+	outline: 1.5px solid var(--headerbg);
+}
+
+.input-container {
+	display: grid;
+	grid-template-columns: 0.5fr 1fr;
+	grid-template-areas: "left right";
+	height: 100%;
+	margin: 15px;
+	gap: 20px;
+	place-items: center;
+}
+
+.welcome-text {
+	grid-area: left;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+}
+
+.welcome-text h3 {
+	text-align: left;
+	font-size: 1.2rem;
+	color: #333;
+}
+
+.welcome-text .sub {
+	font-size: 0.8rem;
+	font-style: italic;
+}
+
+.form {
+	grid-area: right;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-content: center;
+	width: 100%;
+	gap: 0.5rem;
+}
+
+.form label {
+	font-size: 1rem;
+	font-weight: 550;
+}
+
+.form input {
+	width: clamp(80%, 50vw, 90%);
+	height: 25px;
+	font-size: 0.95rem;
+	padding: 1px 3px;
+}
+
+.form textarea {
+	display: flex;
+	width: clamp(80%, 50vw, 90%);
+	height: 4rem;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-size: 0.95rem;
+	resize: none;
+	padding: 8px 4px;
+}
+
+.form button {
+	width: 100px;
+	height: 40px;
+	color: #fff;
+	padding: 5px 10px;
+	font-weight: bold;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	outline: none;
+	overflow: hidden;
+	border-radius: 5px;
+	border: none;
+	background-color: var(--headerbg)
+}
+
+.form button:hover {
+	border-radius: 5px;
+	padding-right: 24px;
+	padding-left: 8px;
+}
+
+.form button:hover:after {
+	opacity: 1;
+	right: 10px;
+}
+
+.form button:after {
+	content: "\00BB";
+	position: absolute;
+	opacity: 0;
+	font-size: 20px;
+	line-height: 40px;
+	top: 0;
+	right: -20px;
+	transition: 0.4s;
 }
