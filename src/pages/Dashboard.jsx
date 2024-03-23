@@ -5,7 +5,11 @@ import Table from "../components/Table";
 //Style Imports
 import "../styles/dashboard.css";
 //Function Imports
-import { generateGPTResponse } from "../helpers/Chatbot.helpers";
+import {
+  generateGPTResponse,
+  generateFineTuneResponse,
+  generateGPT4Response,
+} from "../helpers/Chatbot.helpers";
 //Other Imports
 import { useState } from "react";
 
@@ -18,7 +22,6 @@ function Dashboard() {
     e.preventDefault();
     try {
       const resp = await generateGPTResponse(question);
-      console.log("Question:", question, "\nResponse:", resp);
       setResponseA(resp);
     } catch (error) {
       console.error("ERRRROR:", error);
@@ -27,8 +30,7 @@ function Dashboard() {
   const handleSubmitB = async (e) => {
     e.preventDefault();
     try {
-      const resp = await generateGPTResponse(question);
-      console.log("Question:", question, "\nResponse:", resp);
+      const resp = await generateFineTuneResponse(question);
       setResponseB(resp);
     } catch (error) {
       console.error("ERRRROR:", error);
@@ -36,17 +38,13 @@ function Dashboard() {
   };
   const handleSubmitC = async (e) => {
     e.preventDefault();
-    setResponseC("This form is not currently active.");
+    try {
+      const resp = await generateGPT4Response(question);
+      setResponseC(resp);
+    } catch (error) {
+      console.error("ERRRROR:", error);
+    }
   };
-  // const retrieveGPTResponse = async () => {
-  //   try {
-  //     const resp = await generateGPTResponse(question);
-  //     console.log("Question:", question, "\nResponse:", resp);
-  //     setResponse(resp);
-  //   } catch (error) {
-  //     console.error("ERRRROR:", error);
-  //   }
-  // };
   return (
     <div className="dashboard">
       <Sidebar className="sidebar" />
@@ -62,18 +60,24 @@ function Dashboard() {
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   id="question-ta"
+                  autoFocus
                 />
               </label>
               <button className="card-btn" type="submit">
                 Retrieve
               </button>
             </form>
-            {responseA && <p>{responseA}</p>}
+            {responseA && <p className="response">{responseA}</p>}
           </div>
         </div>
         <div className="card">
           <div className="card-container">
-            <h2 className="card-title">GPT 3.5 Fine Tuned</h2>
+            <div className="card-header">
+              <h2 className="card-title">GPT 3.5 Fine Tuned</h2>
+              <p className="card-sub">
+                This model has been fine tuned on our Q/A data
+              </p>
+            </div>
             <form className="card-form" onSubmit={handleSubmitB}>
               <label className="card-label">
                 Question
@@ -82,40 +86,49 @@ function Dashboard() {
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   id="question-ta"
+                  autoFocus
                 />
               </label>
               <button className="card-btn" type="submit">
                 Retrieve
               </button>
             </form>
-            {responseB && <p>{responseB}</p>}
+            {responseB && <p className="response">{responseB}</p>}
           </div>
         </div>
         <div className="card">
           <div className="card-container">
-            <h2 className="card-title broken">MODEL TITLE</h2>
+            <h2 className="card-title">GPT 4 Preview</h2>
             <form className="card-form" onSubmit={handleSubmitC}>
               <label className="card-label">
                 Question
-                <textarea className="card-textarea" id="question-ta" />
+                <textarea
+                  className="card-textarea"
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
+                  id="question-ta"
+                  autoFocus
+                />
               </label>
               <button className="card-btn" type="submit">
                 Retrieve
               </button>
             </form>
-            {responseC && <p>{responseC}</p>}
+            {responseC && <p className="response">{responseC}</p>}
           </div>
         </div>
         <div className="card">
           <div className="card-container">
             <div className="table-header">
               <h2 className="data-table-header">User Questions</h2>
-              <button className="table-btn">Add Row</button>
+              {/* <button className="table-btn">Add Row</button> */}
             </div>
             <Table />
           </div>
         </div>
-        <div className="card"></div>
+        <div className="card">
+          <div className="card-container"></div>
+        </div>
         <div className="card"></div>
       </main>
     </div>

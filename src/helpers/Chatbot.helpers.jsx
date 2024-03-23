@@ -66,4 +66,38 @@ const generateFineTuneResponse = async (user_question) => {
   return data["choices"][0]["message"]["content"];
 };
 
-export { generateGPTResponse, generateFineTuneResponse };
+const generateGPT4Response = async (user_question) => {
+  const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+  const API_URL = "https://api.openai.com/v1/chat/completions";
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-4-turbo-preview",
+      messages: [
+        {
+          role: "system",
+          content:
+            "Carnegie Classifications Chatbot is a factual and formal chatbot that provides an exact response based solely on data with sources.",
+        },
+        {
+          role: "user",
+          content: user_question,
+        },
+      ],
+      temperature: 1,
+      max_tokens: 100,
+      top_p: 0.75,
+      frequency_penalty: 0.1,
+      presence_penalty: 0,
+    }),
+  };
+  const response = await fetch(API_URL, requestOptions);
+  const data = await response.json();
+  return data["choices"][0]["message"]["content"];
+};
+
+export { generateGPTResponse, generateFineTuneResponse, generateGPT4Response };

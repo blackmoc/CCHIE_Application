@@ -1,3 +1,7 @@
+* {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
 .dashboard {
 	height: 100vh;
 	display: grid;
@@ -33,6 +37,7 @@
 .card {
 	border-radius: 10px;
 	background-color: #f6f7f9;
+	border: 2px solid #005186;
 }
 
 .card:nth-child(1) {
@@ -62,15 +67,20 @@
 .card-container {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 15px;
 	padding: 20px 35px;
-	/* outline: 3px solid red; */
+
 }
 
 .card-title {
 	text-align: center;
 	padding-top: 10px;
 	font-size: 1.5rem;
+}
+
+.card-header p {
+	text-align: center;
+	font-style: italic;
 }
 
 .card-form {
@@ -88,11 +98,16 @@
 .card-textarea {
 	border: 2px solid #DADDEC;
 	margin: 5px 0 10px;
-	height: 70px;
+	height: 60px;
 	outline: none;
 	resize: none;
 	width: 95%;
 	font-size: 1rem;
+	padding: 12px 6px 2px 8px;
+}
+
+.card-textarea:focus {
+	border: 2px solid #005186;
 }
 
 .card-btn {
@@ -114,6 +129,10 @@
 	background-color: #fff;
 	color: #0066CC;
 	transition: 500ms;
+}
+
+.card .response {
+	font-size: 1rem;
 }
 
 .broken {

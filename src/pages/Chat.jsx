@@ -10,7 +10,6 @@ import {
   ErrorMessage,
 } from "../components/Messages";
 import { Logo } from "../components/General";
-import { questionCategory } from "../assets/constants/Constants";
 import { IconButton } from "@mui/material";
 import { Send, ChatBubble } from "@mui/icons-material";
 // Helpers Import
